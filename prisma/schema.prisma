@@ -12,3 +12,47 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  fullname  String
+  password  String
+  role      String   @default("user") // Bisa "admin" atau "user"
+  reviews   Review[]
+  progress  ReadingProgress[]
+}
+
+model Book {
+  id        String   @id @default(cuid())
+  title     String
+  author    String
+  genres    Genre[]   @relation("BookGenres")
+  reviews   Review[]
+}
+
+model Genre {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  books     Book[]   @relation("BookGenres")
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  userId    String
+  bookId    String
+  comment   String
+  rating    Int
+  user      User     @relation(fields: [userId], references: [id])
+  book      Book     @relation(fields: [bookId], references: [id])
+}
+
+model ReadingProgress {
+  id        String   @id @default(cuid())
+  userId    String
+  bookId    String
+  progress  Int // Persentase progress (0-100)
+  user      User     @relation(fields: [userId], references: [id])
+  book      Book     @relation(fields: [bookId], references: [id])
+  @@unique([userId, bookId])
+}
