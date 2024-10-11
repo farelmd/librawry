@@ -29,6 +29,7 @@ model Book {
   author    String
   genres    Genre[]   @relation("BookGenres")
   reviews   Review[]
+  progress  ReadingProgress[]
 }
 
 model Genre {
