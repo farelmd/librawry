@@ -26,7 +26,7 @@ Create a `.env` file in the root directory with the following content:
 
 ```bash
 DATABASE_URL=postgres://postgres:mysecretpassword@localhost:5433/library_db
-JWT_SECRET_KEY=your_jwt_secret
+SECRET_KEY=your_jwt_secret
 ```
 
 ## Project setup
