@@ -57,8 +57,10 @@ $  npm  run  start:prod
 ```bash
 $  npm  run  test:e2e
 ```
- 
- ## **Pattern**
+## **Documentation**
+Swagger is used for API Documentation, you can see it in `http://localhost:3000/swagger`
+
+## **Pattern**
 
 -  **Modular Pattern**: Every application is divided into multiple modules, each encapsulating related functionality. This enhance separation of concerns, reusability, and maintainability.
 
